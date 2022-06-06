@@ -86,6 +86,7 @@
 </br>
 
 <button onclick="submit()">提交</button>
+<!--submit-->
 <script>
     function submit() {
         console.log(points);
@@ -111,9 +112,7 @@
     };
 </script>
 
-<!--<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>-->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
-
+<!--slider-->
 <script>
     window.onload = function () {
         //获取元素
@@ -155,48 +154,52 @@
         }
     }
 </script>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore.js"></script>
+
+
 <script>
-    var points = [];
-    (function () {
-        "use strict";
-        document.onmousemove = handleMouseMove;
-        var count = 0
+    let points = [];
+    let count = 0;
+    let time_last = 0;
 
-        function handleMouseMove(event) {
-            var dot, eventDoc, doc, body, pageX, pageY;
 
-            event = event || window.event; // IE-ism
+    function handleMouseMove(event) {
+        let dot, eventDoc, doc, body, pageX, pageY;
 
-            // If pageX/Y aren't available and clientX/Y
-            // are, calculate pageX/Y - logic taken from jQuery
-            // Calculate pageX/Y if missing and clientX/Y available
-            if (event.pageX == null && event.clientX != null) {
-                eventDoc = (event.target && event.target.ownerDocument) || document;
-                doc = eventDoc.documentElement;
-                body = eventDoc.body;
+        event = event || window.event; // IE-ism
 
-                event.pageX = event.clientX +
-                    (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
-                    (doc && doc.clientLeft || body && body.clientLeft || 0);
-                event.pageY = event.clientY +
-                    (doc && doc.scrollTop || body && body.scrollTop || 0) -
-                    (doc && doc.clientTop || body && body.clientTop || 0);
-            }
-            count += 1
-            //Add a dot to follow the cursor
-            dot = document.createElement('div');
-            dot.className = "dot";
-            dot.style.left = event.pageX + "px";
-            dot.style.top = event.pageY + "px";
-            var t = new Date().getTime();
-            points.push([event.pageX, event.pageY, t]);
-            console.log(count, event.pageX, event.pageY, t);
-            document.body.appendChild(dot);
+        // If pageX/Y aren't available and clientX/Y
+        // are, calculate pageX/Y - logic taken from jQuery
+        // Calculate pageX/Y if missing and clientX/Y available
+        if (event.pageX == null && event.clientX != null) {
+            eventDoc = (event.target && event.target.ownerDocument) || document;
+            doc = eventDoc.documentElement;
+            body = eventDoc.body;
+
+            event.pageX = event.clientX +
+                (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+                (doc && doc.clientLeft || body && body.clientLeft || 0);
+            event.pageY = event.clientY +
+                (doc && doc.scrollTop || body && body.scrollTop || 0) -
+                (doc && doc.clientTop || body && body.clientTop || 0);
         }
-    })();
+        count += 1
+        //Add a dot to follow the cursor
+        dot = document.createElement('div');
+        dot.className = "dot";
+        dot.style.left = event.pageX + "px";
+        dot.style.top = event.pageY + "px";
+        let t = new Date().getTime();
+        points.push([event.pageX, event.pageY, t]);
+        console.log(count, event.pageX, event.pageY, t,t-time_last);
+        document.body.appendChild(dot);
+        time_last = t
+    }
+
+    document.onmousemove = _.throttle(handleMouseMove, 10);
 </script>
-
-
 
 <!--ref:https://blog.csdn.net/Tonglanlinling/article/details/89048271-->
 <!--ref:https://wow.techbrood.com/fiddle/53619-->

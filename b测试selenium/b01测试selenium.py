@@ -22,7 +22,8 @@ while i <= distance:
     ActionChains(driver).move_by_offset(20,0).perform()
     i += 20
 ActionChains(driver).release().perform()
+time.sleep(1)
+driver.find_element(By.XPATH,"/html/body/button").click()
 
-
-time.sleep(1000)
+time.sleep(1)
 driver.close()
