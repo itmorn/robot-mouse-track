@@ -17,7 +17,7 @@ def index():
     mta = MouseTrajectoryAnalyzer(trace)
     mta.show_track()
 
-    lst_derivative_to_xy = mta.get_derivative_to_xy(order=2)
+    lst_derivative_to_xy = mta.get_feature_dev_partial(order=2)
 
     for idx,arr_dev_order in enumerate(lst_derivative_to_xy):
         plt.figure()
