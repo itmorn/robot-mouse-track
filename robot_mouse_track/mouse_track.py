@@ -16,6 +16,14 @@ class MouseTrack:
         self.feature_dev_combine = []
         self.feature_dev_decomposition = []
         self.feature_DOA = []
+        self.feature_diff_time = None
+
+    def get_feature_diff_time(self):
+        if self.feature_diff_time:
+            return self.feature_diff_time
+
+        self.feature_diff_time = self.arr_trace[1:, -1] - self.arr_trace[:-1, -1]
+        return self.feature_diff_time
 
     def get_feature_dev(self, order=2, mode=contants.COMBINE):
         """
@@ -33,25 +41,25 @@ class MouseTrack:
         if len(feature_dev) >= order:
             return feature_dev
 
-        if not feature_dev: # 如果求导阶数不够，则增量计算缺的阶数
-            self.arr_diff_dis = self.arr_trace[1:, :] - self.arr_trace[:-1, :]
-            self.arr_diff_time = np.clip(self.arr_diff_dis[:, -1:], 0, self.max_duration_silent)
+        if not feature_dev:  # 如果求导阶数不够，则增量计算缺的阶数
+            self._arr_diff_dis = self.arr_trace[1:, :] - self.arr_trace[:-1, :]
+            self._arr_diff_time = np.clip(self._arr_diff_dis[:, -1:], 0, self.max_duration_silent)
             if mode == contants.COMBINE:
-                self.arr_diff_dis = (np.sum((self.arr_diff_dis[:, :-1] ** 2), axis=1) ** 0.5)[:, np.newaxis]
+                self._arr_diff_dis = (np.sum((self._arr_diff_dis[:, :-1] ** 2), axis=1) ** 0.5)[:, np.newaxis]
             else:
-                self.arr_diff_dis = self.arr_diff_dis[:, :-1]
+                self._arr_diff_dis = self._arr_diff_dis[:, :-1]
             order_cur = 0
         else:
             order_cur = len(feature_dev)
 
         while 1:
-            arr_dev = self.arr_diff_dis / self.arr_diff_time[:len(self.arr_diff_dis)]
+            arr_dev = self._arr_diff_dis / self._arr_diff_time[:len(self._arr_diff_dis)]
             # arr = np.c_[arr_dev, self.arr_trace[:len(arr_dev), -1]]
             feature_dev.append(arr_dev)
             order_cur += 1
             if order_cur >= order:
                 break
-            self.arr_diff_dis = arr_dev[1:] - arr_dev[:-1]
+            self._arr_diff_dis = arr_dev[1:] - arr_dev[:-1]
 
         return feature_dev
 
@@ -80,8 +88,10 @@ class MouseTrack:
         self.feature_DOA = np.arctan(self.feature_DOA) * 180 / np.pi
         return self.feature_DOA
 
+
 if __name__ == '__main__':
     from examples import trace_example
+
     mt = MouseTrack(trace_example.trace1)
     x = mt.get_feature_dev(order=1, mode=contants.COMBINE)
     y = mt.get_feature_dev(order=2, mode=contants.COMBINE)

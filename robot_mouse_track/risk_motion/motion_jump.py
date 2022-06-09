@@ -1,4 +1,4 @@
-from robot_mouse_track.mouse_track import MouseTrack, COMBINE, DECOMPOSITION
+from robot_mouse_track.mouse_track import MouseTrack
 import numpy as np
 from robot_mouse_track.utils import num_runs, small_runs
 

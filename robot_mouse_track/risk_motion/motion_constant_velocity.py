@@ -47,8 +47,15 @@ class ConstantVelocityMotion:
                 # 如果该直线的长度小，则不考虑
                 continue
 
-            a = arr_dev[left:right + 1]
-            span = a.max() - a.min()
+            if right - left + 1 >= self.least_point + 4:
+                arr_part = arr_dev[left + 2:right - 2 + 1]
+            elif right - left + 1 >= self.least_point + 2:
+                arr_part = arr_dev[left + 1:right - 1 + 1]
+            else:
+                arr_part = arr_dev[left:right + 1]
+
+            # 如果长度较大，则切头去尾（头尾可能有异常变化点），再算span
+            span = arr_part.max() - arr_part.min()
             if span < min_span:
                 min_span = span
 
