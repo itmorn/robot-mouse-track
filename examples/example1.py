@@ -1,6 +1,8 @@
 from examples.trace_example import trace1
-from robot_mouse_track.mouse_track import MouseTrack, COMBINE
-from robot_mouse_track.rules import *
+from robot_mouse_track import contants
+from robot_mouse_track.mouse_track import  MouseTrack
+from robot_mouse_track.risk_motion.motion_linear import LinearMotion
+from robot_mouse_track.risk_motion.motion_constant_velocity import ConstantVelocityMotion
 import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
@@ -24,5 +26,11 @@ if __name__ == '__main__':
     # rule_mouse_jump.judge_risk(mouse_track)
     # rule_mouse_jump = VerticalHorizontalLinearMotion()
     # rule_mouse_jump.judge_risk(mouse_track)
-    rule_mouse_jump = LinearMotion()
-    rule_mouse_jump.judge_risk(mouse_track)
+    # rule_mouse_jump = LinearMotion()
+    # flag, exceed_times = rule_mouse_jump.judge_risk(mouse_track)
+    # print(flag, exceed_times)
+
+    rule_mouse_jump = ConstantVelocityMotion()
+    flag, exceed_times = rule_mouse_jump.judge_risk(mouse_track)
+    print(flag, exceed_times)
+
