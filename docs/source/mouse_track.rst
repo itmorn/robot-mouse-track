@@ -1,5 +1,5 @@
-mouse_track2
+mouse_track
 =====
 
-.. automodule:: mouse_track2
+.. automodule:: mouse_track
     :members:

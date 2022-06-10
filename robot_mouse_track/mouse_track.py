@@ -6,6 +6,20 @@ import contants
 
 
 class MouseTrack:
+    """
+    :param list[list] trace: 轨迹数组，例如：[[x_1,y_1,timestamp_1],[x_2,y_2,timestamp_2],...]
+
+    :var ndarray arr_trace: 轨迹数组转成的ndarray
+    :var ndarray arr_time: 时间ndarray
+    :var int default=20 max_duration_silent: 鼠标在移动的过程中可能会停止。需要定义一个时间间隔，超过多少秒，算静止，将长间隔缩短为一个固定长度
+    :var int default=100 max_DOA_tan: 方向角正切值峰值截断，超过该值，置为np.clip(angle, -max_DOA_tan, max_DOA_tan)
+    :var int default=5 max_DOA_point: 两个点计算角度的时候，采用的是 arr[i] 和 arr[i+max_DOA_point]，因为太近的话，误差较大
+    :var list[ndarray] feature_dev_combine: 合速度的n阶导数
+    :var list[ndarray] feature_dev_decomposition: 分速度的n阶导数
+    :var list[ndarray] feature_DOA: 方向角
+    :var list[ndarray] feature_diff_time: 当前时间差
+    """
+
     def __init__(self, trace):
         self.arr_trace = np.array(trace, np.float64)
         self.arr_time = self.arr_trace[:, -1]
@@ -21,6 +35,12 @@ class MouseTrack:
         self.feature_diff_time = None
 
     def get_feature_diff_time(self):
+        """
+        获取样本点之间的时间差
+
+        :return: 时间差的一维数组
+        :rtype: ndarray
+        """
         if self.feature_diff_time:
             return self.feature_diff_time
 
@@ -29,9 +49,12 @@ class MouseTrack:
 
     def get_feature_dev(self, order=2, mode=contants.COMBINE):
         """
-        获取导数特征
-        :param order: 求导阶数
-        :return:list
+        计算n-order阶导数
+
+        :param order: 求到第n阶导数
+        :param mode: 求导的方式。``combine``：对合速度求导； ``decomposition``：对分速度求导
+        :return: 求导后的结果
+        :rtype: list[ndarray]
         """
         if mode == contants.COMBINE:
             feature_dev = self.feature_dev_combine
@@ -66,6 +89,11 @@ class MouseTrack:
         return feature_dev
 
     def show_track(self):
+        """
+        画出鼠标轨迹
+
+        :return: None
+        """
         fig, ax = plt.subplots(1, 1)
         ax.invert_yaxis()
         plt.plot(self.arr_trace[:, 0], self.arr_trace[:, 1], ".")  #
@@ -77,7 +105,9 @@ class MouseTrack:
     def get_feature_DOA(self):
         """
         计算方向角变化
-        :return:
+
+        :return: 返回方向角的变化特征
+        :rtype: ndarray
         """
         if self.feature_DOA:
             return self.feature_DOA
