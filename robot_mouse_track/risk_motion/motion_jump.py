@@ -1,16 +1,29 @@
-from robot_mouse_track.mouse_track import MouseTrack
+from ..mouse_track import MouseTrack
+from .. import contants
 import numpy as np
-from robot_mouse_track.utils import num_runs, small_runs
 
 
 class JumpMotion:
-    # 鼠标跳变运动
+    """
+    鼠标跳跃运动
+
+    :var int default=20 th_velocity: 每毫秒移动的像素个数  超过该值，就认为是风险
+    :var float default=1.4 th_acceleration: 每毫秒的加速度  超过该值，就认为是风险
+    """
+
     def __init__(self):
-        self.th_velocity = 20  # 每毫秒移动的像素个数  超过该值，就认为是风险
-        self.th_acceleration = 1.4  # 每毫秒的加速度  超过该值，就认为是风险
+        self.th_velocity = 20
+        self.th_acceleration = 1.4
 
     def judge_risk(self, mouse_track: MouseTrack):
-        feature_dev = mouse_track.get_feature_dev(order=2, mode=COMBINE)
+        """
+        风险判定
+
+        :param MouseTrack mouse_track: 鼠标轨迹对象
+        :return: (have_risk, velocity_risk_level, acceleration_risk_level)
+        :rtype: (bool, float, float)
+        """
+        feature_dev = mouse_track.get_feature_dev(order=2, mode=contants.COMBINE)
         arr_velocity = feature_dev[0]
         arr_acceleration = feature_dev[1]
 

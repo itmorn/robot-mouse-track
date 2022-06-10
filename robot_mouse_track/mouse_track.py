@@ -1,12 +1,17 @@
-# -*- coding: utf-8 -*-
+"""
+@Auth: itmorn
+@Date: 2022/6/10-20:15
+@Email: 12567148@qq.com
+"""
 import numpy as np
 import matplotlib.pyplot as plt
-# from robot_mouse_track import contants
-import contants
+from robot_mouse_track import contants
 
 
 class MouseTrack:
     """
+    鼠标轨迹对象
+
     :param list[list] trace: 轨迹数组，例如：[[x_1,y_1,timestamp_1],[x_2,y_2,timestamp_2],...]
 
     :var ndarray arr_trace: 轨迹数组转成的ndarray
@@ -21,6 +26,7 @@ class MouseTrack:
     """
 
     def __init__(self, trace):
+
         self.arr_trace = np.array(trace, np.float64)
         self.arr_time = self.arr_trace[:, -1]
 
@@ -33,6 +39,9 @@ class MouseTrack:
         self.feature_dev_decomposition = []
         self.feature_DOA = []
         self.feature_diff_time = None
+
+        self._arr_diff_dis = None
+        self._arr_diff_time = None
 
     def get_feature_diff_time(self):
         """

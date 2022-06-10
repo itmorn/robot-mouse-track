@@ -1,18 +1,31 @@
 import numpy as np
-from robot_mouse_track.utils import num_runs, small_runs
+from robot_mouse_track.utils import num_runs
 from robot_mouse_track.mouse_track import MouseTrack
-from robot_mouse_track import contants
 
 
 class VerticalHorizontalLinearMotion:
-    # 横/竖直线运动（人手可能会画出横/竖直线，但是很难画出非常长的横/竖直线）
-    def __init__(self):
-        self.least_point = 10  # 这条线上至少有多少个点
+    """
+    横/竖直线运动（人手可能会画出横/竖直线，但是很难画出非常长的横/竖直线）
 
-        self.th_length_x = 500  # 横向直线运动长度超过多少，认为是风险，单位px
-        self.th_length_y = 500  # 纵向直线运动长度超过多少，认为是风险，单位px
+    :var int default=10 least_point: 这条线上至少有多少个点
+    :var int default=500 th_length_x: 横向直线运动长度超过多少，认为是风险，单位px
+    :var int default=500 th_length_y: 纵向直线运动长度超过多少，认为是风险，单位px
+    """
+
+    def __init__(self):
+        self.least_point = 10
+
+        self.th_length_x = 500
+        self.th_length_y = 500
 
     def judge_risk(self, mouse_track: MouseTrack):
+        """
+        风险判定
+
+        :param MouseTrack mouse_track: 鼠标轨迹对象
+        :return: (have_risk, x_risk_level, y_risk_level)
+        :rtype: (bool, float, float)
+        """
         arr_trace_x = mouse_track.arr_trace[:, 0]
         arr_trace_y = mouse_track.arr_trace[:, 1]
         arr_diff = mouse_track.arr_trace[1:, :-1] - mouse_track.arr_trace[:-1, :-1]
