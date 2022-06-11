@@ -1,6 +1,6 @@
 # robot-mouse-track
 [![Documentation Status](https://readthedocs.org/projects/robot-mouse-track-recognition/badge/?version=latest)](https://robot-mouse-track-recognition.readthedocs.io/zh/latest/?badge=latest)
-[!example workflow](https://github.com/itmorn/robot-mouse-track/actions/workflows/main.yml/badge.svg)
+![example workflow](https://github.com/itmorn/robot-mouse-track/actions/workflows/main.yml/badge.svg)
 [![License](https://img.shields.io/github/license/itmorn/robot-mouse-track.svg)](https://github.com/itmorn/robot-mouse-track/blob/main/LICENSE)
 [![codecov](https://codecov.io/gh/itmorn/robot-mouse-track/branch/main/graph/badge.svg)](https://codecov.io/gh/itmorn/robot-mouse-track)
 
