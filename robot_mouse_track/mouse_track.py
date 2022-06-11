@@ -4,7 +4,8 @@ from robot_mouse_track import contants
 
 
 class MouseTrack:
-    """**summary line** Function to do something interesting.鼠标轨迹对象
+    """
+    **summary line** Function to do something interesting.鼠标轨迹对象
 
     **description starts after blank line above**Keyword arguments:
     :var ndarray arr_trace: 轨迹数组转成的ndarray
