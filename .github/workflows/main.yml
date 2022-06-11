@@ -29,7 +29,7 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Run tests and collect coverage
-        run: pytest --cov=../tests/
+        run: pytest --cov=../tests/ --cov-report=xml
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
