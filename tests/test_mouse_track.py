@@ -16,12 +16,21 @@ def test_get_feature_diff_time():
 
 
 def test_get_feature_dev():
-    assert False
+    ma = MouseTrack(trace_example.trace1)
+    feature_diff_time = ma.get_feature_diff_time()
+
+    assert isinstance(feature_diff_time, np.ndarray)
 
 
 def test_show_track():
-    assert False
+    ma = MouseTrack(trace_example.trace1)
+    feature_diff_time = ma.get_feature_diff_time()
+
+    assert isinstance(feature_diff_time, np.ndarray)
 
 
 def test_get_feature_doa():
-    assert False
+    ma = MouseTrack(trace_example.trace1)
+    feature_diff_time = ma.get_feature_diff_time()
+
+    assert isinstance(feature_diff_time, np.ndarray)
