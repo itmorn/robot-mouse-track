@@ -6,6 +6,9 @@ from robot_mouse_track import contants
 class MouseTrack:
     """
     鼠标轨迹对象
+
+    :param list[list] trace: 轨迹数组，例如：[[x_1,y_1,timestamp_1],[x_2,y_2,timestamp_2],...]
+
     :var ndarray arr_trace: 轨迹数组转成的ndarray
     :var ndarray arr_time: 时间ndarray
     :var int default=20 max_duration_silent: 鼠标在移动的过程中可能会停止。需要定义一个时间间隔，超过多少秒，算静止，将长间隔缩短为一个固定长度
@@ -18,9 +21,6 @@ class MouseTrack:
     """
 
     def __init__(self, trace):
-        """
-        :param list[list] trace: 轨迹数组，例如：[[x_1,y_1,timestamp_1],[x_2,y_2,timestamp_2],...]
-        """
         self.arr_trace = np.array(trace, np.float64)
         self.arr_time = self.arr_trace[:, -1]
 
