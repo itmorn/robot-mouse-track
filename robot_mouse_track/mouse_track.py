@@ -4,9 +4,8 @@ from robot_mouse_track import contants
 
 
 class MouseTrack:
-    """鼠标轨迹对象
-
-    :param list[list] trace: 轨迹数组，例如：[[x_1,y_1,timestamp_1],[x_2,y_2,timestamp_2],...]
+    """
+    鼠标轨迹对象
 
     :var ndarray arr_trace: 轨迹数组转成的ndarray
     :var ndarray arr_time: 时间ndarray
@@ -17,10 +16,13 @@ class MouseTrack:
     :var list[ndarray] feature_dev_decomposition: 分速度的n阶导数
     :var list[ndarray] feature_doa: 方向角
     :var list[ndarray] feature_diff_time: 当前时间差
+
     """
 
     def __init__(self, trace):
-
+        """
+        :param list[list] trace: 轨迹数组，例如：[[x_1,y_1,timestamp_1],[x_2,y_2,timestamp_2],...]
+        """
         self.arr_trace = np.array(trace, np.float64)
         self.arr_time = self.arr_trace[:, -1]
 
