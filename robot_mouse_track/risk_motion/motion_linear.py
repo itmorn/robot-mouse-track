@@ -5,13 +5,26 @@ from robot_mouse_track.utils import num_runs, small_runs
 
 
 class LinearMotion:
-    # 斜直线运动（人手可能会画出横/竖直线，但是画不出来斜直线）
+    """
+    斜直线运动（人手可能会画出横/竖直线，但是画不出来斜直线）
+
+    :var int default=5 least_point: 这条线上至少有多少个点
+    :var int default=100 th_length: 斜线运动长度超过多少，认为是风险，单位px
+    """
+
     def __init__(self):
         self.least_point = 5  # 这条线上至少有多少个点
-
         self.th_length = 100  # 斜线运动长度超过多少，认为是风险，单位px
 
     def judge_risk(self, mouse_track: MouseTrack):
+        """
+        风险判定
+
+        :param MouseTrack mouse_track: 鼠标轨迹对象
+        :return: (have_risk, risk_level)
+        :rtype: (bool, float)
+        """
+
         # n个点算斜率，斜率相近表示平行
         feature_DOA = mouse_track.get_feature_DOA()
 

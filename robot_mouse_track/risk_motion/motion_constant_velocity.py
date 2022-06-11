@@ -1,27 +1,40 @@
 from robot_mouse_track.mouse_track import MouseTrack
 import numpy as np
-from robot_mouse_track.utils import num_runs, small_runs
+from robot_mouse_track.utils import small_runs
 from robot_mouse_track import contants
 
 
 class ConstantVelocityMotion:
-    # 分速度的匀速运动【实现】
-    # 分速度的匀变速运动【实现】
-    # 分速度的匀变加速运动
-    # 合速度的匀速运动【实现】
-    # 合速度的匀变速运动【实现】
-    # 合速度的匀变加速运动
+    """
+    分速度的匀速运动
+    分速度的匀变速运动
+    分速度的匀变加速运动
+    合速度的匀速运动
+    合速度的匀变速运动
+    合速度的匀变加速运动
+
+    :var str default="combine" direction: 求导方向。 "x"：对 ``x`` 分量求导；"y"：对 ``y`` 分量求导；"combine"：对合速度 ``combine`` 求导
+    :var int default=2 n_order_dev: 距离对时间的几阶导数  1阶是速度  2阶是加速度  3阶是加速度的变化速率
+    :var int default=5 least_point: 最少要包含的点的个数
+    :var int default=100 least_length: 最少移动的距离
+    :var float default=0.01 th_span: 两点之间的最大变化幅度，低于这个值，则认为是风险
+    """
+
     def __init__(self):
-        self.direction = contants.COMBINE  # 方向  x，y，combine
-        self.n_order_dev = 2  # 距离对时间的几阶导数  1阶是速度  2阶是加速度  3阶是加速度的变化速率
-
-        self.least_point = 5  # 最少要包含的点的个数
-        self.least_length = 100  # 最少移动的距离
-
-        self.th_span = 0.01  # 两点之间的最大变化幅度，低于这个值，则认为是风险
+        self.direction = contants.COMBINE
+        self.n_order_dev = 2
+        self.least_point = 5
+        self.least_length = 100
+        self.th_span = 0.01
 
     def judge_risk(self, mouse_track: MouseTrack):
-        # if self.direction==contants.COMBINE:
+        """
+        风险判定
+
+        :param MouseTrack mouse_track: 鼠标轨迹对象
+        :return: (have_risk, risk_level)
+        :rtype: (bool, float)
+        """
         feature_dev = mouse_track.get_feature_dev(order=self.n_order_dev, mode=self.direction)
         if self.direction == contants.COMBINE:
             arr_dev = feature_dev[self.n_order_dev - 1]

@@ -4,12 +4,25 @@ from robot_mouse_track.utils import num_runs, small_runs
 
 
 class SlowMotion:
-    # 鼠标跳变运动
+    """
+    轨迹点间 时间间隔非常大的运动（比如pyautogui、鼠标录制软件【普通速度】）
+
+    :var int default=10 th_slow:  超过多少毫秒的移动 算作 缓慢
+    :var float default=0.5 th_length: 缓慢移动的次数占比。超过该值判定为风险
+    """
+
     def __init__(self):
-        self.th_slow = 10  # 超过多少毫秒的移动 算作 缓慢
-        self.th_slow_rate = 0.5  # 缓慢移动的次数占比。超过该值判定为风险
+        self.th_slow = 10
+        self.th_slow_rate = 0.5
 
     def judge_risk(self, mouse_track: MouseTrack):
+        """
+        风险判定
+
+        :param MouseTrack mouse_track: 鼠标轨迹对象
+        :return: (have_risk, risk_level)
+        :rtype: (bool, float)
+        """
         feature_diff_time = mouse_track.get_feature_diff_time()
 
         num_slow = np.sum(feature_diff_time > self.th_slow)
