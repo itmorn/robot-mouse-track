@@ -3,10 +3,9 @@
 @Date: 2022/6/10-20:15
 @Email: 12567148@qq.com
 """
+
 from robot_mouse_track.mouse_track import MouseTrack
 import numpy as np
-from robot_mouse_track.utils import num_runs, small_runs
-from robot_mouse_track import contants
 
 
 def calc_vec(mouse_track: MouseTrack, len_x=1920, len_y=1280, bin_split_nx=4, bin_split_ny=4):

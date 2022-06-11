@@ -3,6 +3,7 @@
 @Date: 2022/6/11-16:52
 @Email: 12567148@qq.com
 """
+
 from tests import trace_example
 from robot_mouse_track.mouse_track import MouseTrack
 import numpy as np

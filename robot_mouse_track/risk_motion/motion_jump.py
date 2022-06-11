@@ -3,6 +3,7 @@
 @Date: 2022/6/10-20:15
 @Email: 12567148@qq.com
 """
+
 from ..mouse_track import MouseTrack
 from .. import contants
 import numpy as np

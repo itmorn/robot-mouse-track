@@ -3,6 +3,7 @@
 @Date: 2022/6/10-20:15
 @Email: 12567148@qq.com
 """
+
 import numpy as np
 from robot_mouse_track.mouse_track import MouseTrack
 from robot_mouse_track.utils import small_runs

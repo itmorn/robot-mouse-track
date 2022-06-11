@@ -3,6 +3,7 @@
 @Date: 2022/6/10-20:15
 @Email: 12567148@qq.com
 """
+
 from flask import Flask
 from flask import request
 from flask_cors import CORS  # 导入模块
@@ -22,11 +23,10 @@ def index():
 
     lst_derivative_to_xy = mouse_track.get_feature_dev(order=2)
 
-    for idx,arr_feature in enumerate(lst_derivative_to_xy):
+    for _, arr_feature in enumerate(lst_derivative_to_xy):
         plt.figure()
         plt.plot(mouse_track.arr_time[:len(arr_feature)], arr_feature[:, 0])
         plt.show()
-
 
     return "ok"
 
