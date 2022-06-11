@@ -1,4 +1,5 @@
 # robot-mouse-track
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/459f4e3d548246bf96df1bbf3f708092)](https://app.codacy.com/gh/itmorn/robot-mouse-track?utm_source=github.com&utm_medium=referral&utm_content=itmorn/robot-mouse-track&utm_campaign=Badge_Grade_Settings)
 [![Documentation Status](https://readthedocs.org/projects/robot-mouse-track-recognition/badge/?version=latest)](https://robot-mouse-track-recognition.readthedocs.io/zh/latest/?badge=latest)
 ![example workflow](https://github.com/itmorn/robot-mouse-track/actions/workflows/main.yml/badge.svg)
 [![codecov](https://codecov.io/gh/itmorn/robot-mouse-track/branch/main/graph/badge.svg)](https://codecov.io/gh/itmorn/robot-mouse-track)
