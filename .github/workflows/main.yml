@@ -39,4 +39,4 @@ jobs:
           
           curl -Os https://uploader.codecov.io/latest/linux/codecov
           chmod +x codecov
-          ./codecov
+          ./codecov -t 188f2060-2990-40f2-b3dd-ca0a05bdf537
