@@ -5,6 +5,7 @@ from robot_mouse_track import contants
 
 class MouseTrack:
     """
+
     **summary line** Function to do something interesting.鼠标轨迹对象
 
     **description starts after blank line above**Keyword arguments:
