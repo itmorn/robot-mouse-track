@@ -1,4 +1,5 @@
 pytest
 pytest-cover
+python-coveralls
 numpy
 matplotlib
