@@ -4,8 +4,7 @@ from robot_mouse_track import contants
 
 
 class MouseTrack:
-    """
-    鼠标轨迹对象
+    """鼠标轨迹对象
 
     :param list[list] trace: 轨迹数组，例如：[[x_1,y_1,timestamp_1],[x_2,y_2,timestamp_2],...]
 
