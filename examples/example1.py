@@ -1,11 +1,10 @@
 from examples.trace_example import trace1,trace2,trace3
-from robot_mouse_track import contants
 from robot_mouse_track.mouse_track import MouseTrack
-from robot_mouse_track.risk_motion.motion_linear import LinearMotion
-from robot_mouse_track.risk_motion.motion_constant_velocity import ConstantVelocityMotion
-from robot_mouse_track.risk_motion.motion_slow import SlowMotion
+# from robot_mouse_track.risk_motion.motion_linear import LinearMotion
+# from robot_mouse_track.risk_motion.motion_constant_velocity import ConstantVelocityMotion
+# from robot_mouse_track.risk_motion.motion_slow import SlowMotion
 from robot_mouse_track.risk_motion.motion_similar import SimilarMotion, calc_vec
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
     # mouse_track = MouseTrack(trace1)
