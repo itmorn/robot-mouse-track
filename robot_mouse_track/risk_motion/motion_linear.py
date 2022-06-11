@@ -3,9 +3,9 @@
 @Date: 2022/6/10-20:15
 @Email: 12567148@qq.com
 """
-from robot_mouse_track.mouse_track import MouseTrack
 import numpy as np
-from robot_mouse_track.utils import num_runs, small_runs
+from robot_mouse_track.mouse_track import MouseTrack
+from robot_mouse_track.utils import small_runs
 
 
 class LinearMotion:
@@ -30,11 +30,11 @@ class LinearMotion:
         """
 
         # n个点算斜率，斜率相近表示平行
-        feature_DOA = mouse_track.get_feature_DOA()
+        feature_doa = mouse_track.get_feature_doa()
 
         # 斜率变化幅度较小则认为是斜线
         # 获取斜率变化幅度较小的片段的左右闭区间
-        lst_small = small_runs(feature_DOA, span=1)
+        lst_small = small_runs(feature_doa, span=1)
         max_length = 0
         for left, right in lst_small:
             if right - left + 1 < self.least_point:
