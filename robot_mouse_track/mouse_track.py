@@ -7,6 +7,7 @@ class MouseTrack:
     """
     鼠标轨迹对象
 
+    Keyword arguments:
     :var ndarray arr_trace: 轨迹数组转成的ndarray
     :var ndarray arr_time: 时间ndarray
     :var int default=20 max_duration_silent: 鼠标在移动的过程中可能会停止。需要定义一个时间间隔，超过多少秒，算静止，将长间隔缩短为一个固定长度
@@ -16,7 +17,6 @@ class MouseTrack:
     :var list[ndarray] feature_dev_decomposition: 分速度的n阶导数
     :var list[ndarray] feature_doa: 方向角
     :var list[ndarray] feature_diff_time: 当前时间差
-
     """
 
     def __init__(self, trace):
