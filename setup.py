@@ -1,13 +1,13 @@
 from distutils.core import setup
 from setuptools import find_packages
 
-with open("README.rst", "r", encoding="utf-8") as f:
-    long_description = f.read()
+# with open("README.rst", "r", encoding="utf-8") as f:
+#     long_description = f.read()
 
 setup(name='robot_mouse_track',  # 包名
       version='0.0.1',  # 版本号
       description='A small example package',
-      long_description=long_description,
+      long_description='A long example package',
       author='itmorn',
       author_email='12567148@qq.com',
       url='https://mp.weixin.qq.com/s/9FQ-Tun5FbpBepBAsdY62w',
