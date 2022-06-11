@@ -1,3 +1,8 @@
+"""
+@Auth: itmorn
+@Date: 2022/6/10-20:15
+@Email: 12567148@qq.com
+"""
 from robot_mouse_track.mouse_track import MouseTrack
 import numpy as np
 from robot_mouse_track.utils import num_runs, small_runs
