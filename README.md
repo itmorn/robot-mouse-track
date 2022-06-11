@@ -1,6 +1,5 @@
 # robot-mouse-track
 [![Documentation Status](https://readthedocs.org/projects/robot-mouse-track-recognition/badge/?version=latest)](https://robot-mouse-track-recognition.readthedocs.io/zh/latest/?badge=latest)
-
 ![example workflow](https://github.com/itmorn/robot-mouse-track/actions/workflows/main.yml/badge.svg)
 
 
