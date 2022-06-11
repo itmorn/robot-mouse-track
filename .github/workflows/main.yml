@@ -36,3 +36,7 @@ jobs:
           echo test, and deploy your project.
           pip install -r requirements.txt
           pytest tests/test_mouse_track.py
+          
+          curl -Os https://uploader.codecov.io/latest/linux/codecov
+          chmod +x codecov
+          ./codecov
