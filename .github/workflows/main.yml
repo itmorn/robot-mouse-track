@@ -34,4 +34,5 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          pip install -r requirements.txt
           pytest tests/test_mouse_track.py
