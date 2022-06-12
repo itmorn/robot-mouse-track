@@ -3,3 +3,5 @@ pytest-cover
 python-coveralls
 numpy
 matplotlib
+sphinx_markdown_tables
+recommonmark

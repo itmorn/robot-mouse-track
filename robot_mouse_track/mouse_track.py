@@ -37,7 +37,7 @@ class MouseTrack:
         self._arr_diff_dis = None
         self._arr_diff_time = None
 
-    def get_feature_diff_time(self) -> np.ndarray:
+    def get_feature_diff_time(self):
         """
         获取样本点之间的时间差
 
@@ -50,7 +50,7 @@ class MouseTrack:
         self.feature_diff_time = self.arr_trace[1:, -1] - self.arr_trace[:-1, -1]
         return self.feature_diff_time
 
-    def get_feature_dev(self, order=2, mode=contants.COMBINE) -> list[np.ndarray]:
+    def get_feature_dev(self, order=2, mode=contants.COMBINE):
         """
         计算n-order阶导数
 
@@ -73,8 +73,7 @@ class MouseTrack:
             self._arr_diff_dis = self.arr_trace[1:, :] - self.arr_trace[:-1, :]
             self._arr_diff_time = np.clip(self._arr_diff_dis[:, -1:], 0, self.max_duration_silent)
             if mode == contants.COMBINE:
-                self._arr_diff_dis = \
-                    (np.sum((self._arr_diff_dis[:, :-1] ** 2), axis=1) ** 0.5)[:, np.newaxis]
+                self._arr_diff_dis = (np.sum((self._arr_diff_dis[:, :-1] ** 2), axis=1) ** 0.5)[:, np.newaxis]
             else:
                 self._arr_diff_dis = self._arr_diff_dis[:, :-1]
             order_cur = 0
@@ -83,7 +82,6 @@ class MouseTrack:
 
         while 1:
             arr_dev = self._arr_diff_dis / self._arr_diff_time[:len(self._arr_diff_dis)]
-            # arr = np.c_[arr_dev, self.arr_trace[:len(arr_dev), -1]]
             feature_dev.append(arr_dev)
             order_cur += 1
             if order_cur >= order:
@@ -100,7 +98,7 @@ class MouseTrack:
         """
         _, axis = plt.subplots(1, 1)
         axis.invert_yaxis()
-        plt.plot(self.arr_trace[:, 0], self.arr_trace[:, 1], ".")  #
+        plt.plot(self.arr_trace[:, 0], self.arr_trace[:, 1], ".")
         axis.set_xlim((-100, 1920))
         axis.set_ylim((1280, -100))
         plt.title("trace xy")
@@ -116,14 +114,11 @@ class MouseTrack:
         if self.feature_doa:
             return self.feature_doa
 
-        arr_diff_dis = self.arr_trace[self.max_doa_point:, :-1] - \
-                       self.arr_trace[:-self.max_doa_point, :-1]
+        arr_diff_dis = self.arr_trace[self.max_doa_point:, :-1] - self.arr_trace[:-self.max_doa_point, :-1]
         # 防止除以0
         arr_diff_dis[:, 0][np.where(arr_diff_dis[:, 0] == 0)] = 10e-8
 
-        self.feature_doa = np.clip(
-            arr_diff_dis[:, 1] / arr_diff_dis[:, 0], -self.max_doa_tan, self.max_doa_tan
-        )
+        self.feature_doa = np.clip(arr_diff_dis[:, 1] / arr_diff_dis[:, 0], -self.max_doa_tan, self.max_doa_tan)
 
         self.feature_doa = np.arctan(self.feature_doa) * 180 / np.pi
         return self.feature_doa
