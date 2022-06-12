@@ -11,9 +11,9 @@ class JumpMotion:
     :var float default=1.4 th_acceleration: 每毫秒的加速度  超过该值，就认为是风险
     """
 
-    def __init__(self):
-        self.th_velocity = 20
-        self.th_acceleration = 1.4
+    def __init__(self, th_velocity=20, th_acceleration=1.4):
+        self.th_velocity = th_velocity
+        self.th_acceleration = th_acceleration
 
     def judge_risk(self, mouse_track: MouseTrack):
         """
@@ -21,7 +21,7 @@ class JumpMotion:
 
         :param MouseTrack mouse_track: 鼠标轨迹对象
         :return: (have_risk, velocity_risk_level, acceleration_risk_level)
-        :rtype: (bool, float, float)
+        :rtype: bool, (float, float)
         """
         feature_dev = mouse_track.get_feature_dev(order=2, mode=contants.COMBINE)
         arr_velocity = feature_dev[0]
