@@ -1,9 +1,9 @@
-API Reference
+机器行为类
 -------------
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 3
+   :caption: 目录:
 
    motion_jump
    motion_vertical_horizontal_linear

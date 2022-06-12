@@ -24,10 +24,10 @@ class MouseTrack:
         self.arr_trace = np.array(trace, np.float64)
         self.arr_time = self.arr_trace[:, -1]
 
-        self.max_duration_silent = 20  # 间隔超过多少秒，算静止，将长间隔缩短为一个固定长度
+        self.max_duration_silent = 20
 
-        self.max_doa_tan = 100  # 正切值峰值截断
-        self.max_doa_point = 5  # 两个点计算角度的时候，采用的是 arr[i] 和 arr[i+max_DOA_point]，太近的话，误差较大
+        self.max_doa_tan = 100
+        self.max_doa_point = 5
 
         self.feature_dev_combine = []
         self.feature_dev_decomposition = []
@@ -37,7 +37,7 @@ class MouseTrack:
         self._arr_diff_dis = None
         self._arr_diff_time = None
 
-    def get_feature_diff_time(self):
+    def get_feature_diff_time(self) -> np.ndarray:
         """
         获取样本点之间的时间差
 
@@ -50,7 +50,7 @@ class MouseTrack:
         self.feature_diff_time = self.arr_trace[1:, -1] - self.arr_trace[:-1, -1]
         return self.feature_diff_time
 
-    def get_feature_dev(self, order=2, mode=contants.COMBINE):
+    def get_feature_dev(self, order=2, mode=contants.COMBINE) -> list[np.ndarray]:
         """
         计算n-order阶导数
 
