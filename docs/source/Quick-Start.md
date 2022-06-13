@@ -32,10 +32,10 @@ trace_example，表示鼠标轨迹的序列；其中，每一项为`[坐标x，�
 ```python
 mouse_track.show_track()
 ```
-![img.png](imgs/quick_start/trace_itmorn.png)
+![](imgs/quick_start/trace_itmorn.png)
 
 其对应的收集客户端为浏览器，下图展示了用户鼠标浏览器上移动的轨迹
-![img.png](imgs/quick_start/trace_itmorn_browser.png)
+![](imgs/quick_start/trace_itmorn_browser.png)
 如果你想为自己的客户端添加收集鼠标轨迹的JavaScript代码，
 可以参考[鼠标轨迹数据的收集](Collect-Data.md)
 
@@ -65,11 +65,11 @@ trace_itmorn是一段真实的鼠标轨迹；下面我们使用selenium操作浏
 
 在浏览器上留下的轨迹只能看到一点点
 
-![img.png](imgs/quick_start/selenium_jump_browser.png)
+![](imgs/quick_start/selenium_jump_browser.png)
 
 后端程序收集到轨迹为
 
-![img_1.png](imgs/quick_start/selenium_jump.png)
+![](imgs/quick_start/selenium_jump.png)
 
 接着，使用程序对该轨迹进行判定：
 ```python
