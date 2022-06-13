@@ -47,7 +47,7 @@ class ConstantVelocityMotion:
 
         lst_small = small_runs(arr_dev[:, 0], span=self.th_span)
 
-        min_span = self.th_span
+        min_span = 1000000
         for left, right in lst_small:
             if right - left + 1 < self.least_point:
                 # 如果该直线上的点的个数少，则不考虑

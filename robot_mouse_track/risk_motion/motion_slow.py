@@ -6,12 +6,12 @@ class SlowMotion:
     """
     轨迹点间 时间间隔非常大的运动（比如pyautogui、鼠标录制软件【普通速度】）
 
-    :var int default=10 th_slow:  超过多少毫秒的移动 算作 缓慢
+    :var int default=15 th_slow:  超过多少毫秒的移动 算作 缓慢
     :var float default=0.5 th_length: 缓慢移动的次数占比。超过该值判定为风险
     """
 
     def __init__(self):
-        self.th_slow = 10
+        self.th_slow = 15
         self.th_slow_rate = 0.5
 
     def judge_risk(self, mouse_track: MouseTrack):

@@ -90,17 +90,21 @@ class MouseTrack:
 
         return feature_dev
 
-    def show_track(self):
+    def show_track(self, x_min=-100, x_max=1920, y_min=-100, y_max=1280):
         """
         画出鼠标轨迹
 
+        :param int default=-100 x_min: 横坐标最小值
+        :param int default=1920 x_max: 横坐标最大值
+        :param int default=-100 y_min: 纵坐标最小值
+        :param int default=1280 y_max: 纵坐标最大值
         :return: None
         """
         _, axis = plt.subplots(1, 1)
         axis.invert_yaxis()
         plt.plot(self.arr_trace[:, 0], self.arr_trace[:, 1], ".")
-        axis.set_xlim((-100, 1920))
-        axis.set_ylim((1280, -100))
+        axis.set_xlim((x_min, x_max))
+        axis.set_ylim((y_max, y_min))
         plt.title("trace xy")
         plt.show()
 
@@ -125,9 +129,9 @@ class MouseTrack:
 
 
 if __name__ == '__main__':
-    from examples import trace_example
+    from examples import trace_examples
 
-    mt = MouseTrack(trace_example.trace1)
+    mt = MouseTrack(trace_examples.trace1)
     x = mt.get_feature_dev(order=1, mode=contants.COMBINE)
     y = mt.get_feature_dev(order=2, mode=contants.COMBINE)
     print(x)

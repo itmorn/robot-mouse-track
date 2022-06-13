@@ -24,7 +24,7 @@ class VerticalHorizontalLinearMotion:
 
         :param MouseTrack mouse_track: 鼠标轨迹对象
         :return: (have_risk, x_risk_level, y_risk_level)
-        :rtype: (bool, float, float)
+        :rtype: bool, (float, float)
         """
         arr_trace_x = mouse_track.arr_trace[:, 0]
         arr_trace_y = mouse_track.arr_trace[:, 1]

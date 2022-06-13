@@ -8,12 +8,14 @@ class LinearMotion:
     斜直线运动（人手可能会画出横/竖直线，但是画不出来斜直线）
 
     :var int default=5 least_point: 这条线上至少有多少个点
-    :var int default=100 th_length: 斜线运动长度超过多少，认为是风险，单位px
+    :var int default=200 th_length: 斜线运动长度超过多少，认为是风险，单位px
+    :var float default=0.1 th_span: 两点之间的最大方向角变化幅度，低于这个值，则认为是风险
     """
 
     def __init__(self):
         self.least_point = 5  # 这条线上至少有多少个点
-        self.th_length = 100  # 斜线运动长度超过多少，认为是风险，单位px
+        self.th_length = 200  # 斜线运动长度超过多少，认为是风险，单位px
+        self.th_span = 0.1
 
     def judge_risk(self, mouse_track: MouseTrack):
         """
@@ -29,7 +31,7 @@ class LinearMotion:
 
         # 斜率变化幅度较小则认为是斜线
         # 获取斜率变化幅度较小的片段的左右闭区间
-        lst_small = small_runs(feature_doa, span=1)
+        lst_small = small_runs(feature_doa, span=self.th_span)
         max_length = 0
         for left, right in lst_small:
             if right - left + 1 < self.least_point:
