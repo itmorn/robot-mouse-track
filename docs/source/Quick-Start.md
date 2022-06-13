@@ -59,8 +59,9 @@ exceed_times_acceleration 表示加速度触发风险等级，越高表示风险
 
 用户可以根据这两个风险等级，根据自身业务需求，调整计算风险的权重。
 
-trace_itmorn是一段真实的鼠标轨迹；下面我们使用selenium操作浏览器，产生一段机器轨迹，看看程序的识别效果
-产生该轨迹的脚本为：TODO
+trace_itmorn是一段真实的鼠标轨迹；下面我们使用selenium操作浏览器，产生一段机器轨迹，
+观察程序的识别效果 产生该轨迹的脚本为：
+[use_selenium_jump.py](https://github.com/itmorn/robot-mouse-track/blob/main/examples/use_selenium_jump.py)
 
 在浏览器上留下的轨迹只能看到一点点
 
