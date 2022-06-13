@@ -30,8 +30,8 @@ jobs:
         run: pip install -r requirements.txt
       - name: Add PYTHONPATH
         run: |
+          cd ..
           pwd
-          export PYTHONPATH=$PYTHONPATH:..
       - name: Run tests and collect coverage
         run: pytest --cov --cov-report=html
 
