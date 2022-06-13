@@ -7,8 +7,6 @@ from robot_mouse_track import contants
 from examples.trace_examples import trace_itmorn
 from robot_mouse_track.mouse_track import MouseTrack
 import numpy as np
-import pytest
-
 
 def test_get_feature_diff_time():
     ma = MouseTrack(trace_itmorn)

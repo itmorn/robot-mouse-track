@@ -1,10 +1,8 @@
-from flask import Flask,jsonify
+from flask import Flask, jsonify
 from flask import request
-from flask_cors import CORS  # 导入模块
+from flask_cors import CORS
 
-app = Flask(__name__)
-CORS(app, supports_credentials=True)  # 设置跨域
-from examples.trace_examples import trace_itmorn, trace_selenium_jump, trace_answer_unlock
+from examples.trace_examples import trace_itmorn, trace_answer_unlock
 from robot_mouse_track.mouse_track import MouseTrack
 from robot_mouse_track.risk_motion.motion_jump import JumpMotion
 from robot_mouse_track.risk_motion.motion_vertical_horizontal_linear import VerticalHorizontalLinearMotion
@@ -12,7 +10,9 @@ from robot_mouse_track.risk_motion.motion_linear import LinearMotion
 from robot_mouse_track.risk_motion.motion_constant_velocity import ConstantVelocityMotion
 from robot_mouse_track.risk_motion.motion_slow import SlowMotion
 from robot_mouse_track.risk_motion.motion_similar import SimilarMotion, calc_vec
-import matplotlib.pyplot as plt
+
+app = Flask(__name__)
+CORS(app, supports_credentials=True)  # 设置跨域
 
 
 @app.route("/predict", methods=["POST"])

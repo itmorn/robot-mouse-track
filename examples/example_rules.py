@@ -1,4 +1,4 @@
-from examples.trace_examples import trace_itmorn, trace_selenium_jump, trace_answer_unlock
+from examples.trace_examples import trace_itmorn,  trace_answer_unlock
 from robot_mouse_track.mouse_track import MouseTrack
 from robot_mouse_track.risk_motion.motion_jump import JumpMotion
 from robot_mouse_track.risk_motion.motion_vertical_horizontal_linear import VerticalHorizontalLinearMotion
@@ -7,7 +7,6 @@ from robot_mouse_track.risk_motion.motion_constant_velocity import ConstantVeloc
 from robot_mouse_track.risk_motion.motion_slow import SlowMotion
 from robot_mouse_track.risk_motion.motion_similar import SimilarMotion, calc_vec
 
-# import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
     mouse_track = MouseTrack(trace_itmorn)
