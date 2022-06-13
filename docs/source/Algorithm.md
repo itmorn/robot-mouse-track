@@ -1,7 +1,7 @@
 # 算法原理
 
 ## 速度的计算
-![img.png](imgs/algorithm/01.png)
+![](imgs/algorithm/01.png)
 我们知道，要想计算速度，必须要有距离s和时间t.
 
 点1到点2之间的平均速度，既可以当做点1位置的瞬时速度，也可以当做点2位置的瞬时速度。
@@ -26,7 +26,7 @@ self._arr_diff_time = np.clip(self._arr_diff_dis[:, -1:], 0, self.max_duration_s
 
 
 ## 方向角的计算
-![img.png](imgs/algorithm/02.png)
+![](imgs/algorithm/02.png)
 我们在计算方向角的时候，尽量避免使用连续的两个点，因为那样很容易出现大量45度，90度的现象，
 不利于我们分析问题。
 

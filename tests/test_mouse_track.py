@@ -11,9 +11,9 @@ import numpy as np
 def test_get_feature_diff_time():
     ma = MouseTrack(trace_itmorn)
     feature_diff_time = ma.get_feature_diff_time()
-    feature_diff_time2 = ma.get_feature_diff_time()
+    feature_diff_time = ma.get_feature_diff_time()
 
-    assert isinstance(feature_diff_time2, np.ndarray)
+    assert isinstance(feature_diff_time, np.ndarray)
 
 
 def test_get_feature_dev():
@@ -26,6 +26,7 @@ def test_get_feature_dev():
     feature_diff_time = ma.get_feature_dev(order=1,mode=contants.DECOMPOSITION)
     feature_diff_time = ma.get_feature_dev(order=2,mode=contants.DECOMPOSITION)
     feature_diff_time = ma.get_feature_dev(order=2,mode=contants.DECOMPOSITION)
+    print()
 
     assert isinstance(feature_diff_time, list)
 

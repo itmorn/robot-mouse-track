@@ -39,7 +39,7 @@ trace_answer_unlock = [[72, 0, 1655046417887], [72, 1, 1655046417903], [70, 3, 1
 mouse_track = MouseTrack(trace_answer_unlock)
 mouse_track.show_track()
 ```
-![img.png](imgs/feature_engineering/trace_answer_unlock.png)
+![](imgs/feature_engineering/trace_answer_unlock.png)
 
 ### 鼠标移动合速度
 ```python
@@ -48,7 +48,7 @@ import matplotlib.pyplot as plt
 plt.plot(mouse_track.arr_trace[:len(feature_dev_order1),-1], feature_dev_order1)
 plt.show()
 ```
-![img.png](imgs/feature_engineering/feature_dev_order1.png)
+![](imgs/feature_engineering/feature_dev_order1.png)
 
 从上图可以看出，第一个峰是答完题，向滑块验证码的快速移动，第二个峰是解锁滑块后，向提交按钮快速移动
 
@@ -59,7 +59,7 @@ plt.xlabel("time")
 plt.ylabel("px/ms")
 plt.show()
 ```
-![img.png](imgs/feature_engineering/feature_dev_order2.png)
+![](imgs/feature_engineering/feature_dev_order2.png)
 
 ### 鼠标移动分速度(x方向)
 ```python
@@ -69,7 +69,7 @@ plt.xlabel("time")
 plt.ylabel("x-axis px/ms")
 plt.show()
 ```
-![img.png](imgs/feature_engineering/feature_dev_order1_x.png)
+![](imgs/feature_engineering/feature_dev_order1_x.png)
 
 ### 鼠标移动方向角变化
 ```python
@@ -79,4 +79,4 @@ plt.xlabel("time")
 plt.ylabel("angle")
 plt.show()
 ```
-![img.png](imgs/feature_engineering/feature_doa.png)
+![](imgs/feature_engineering/feature_doa.png)

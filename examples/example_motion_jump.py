@@ -1,4 +1,4 @@
-from examples.trace_examples import trace_itmorn,trace_selenium_jump
+from examples.trace_examples import trace_selenium_jump
 from robot_mouse_track.mouse_track import MouseTrack
 from robot_mouse_track.risk_motion.motion_jump import JumpMotion
 
