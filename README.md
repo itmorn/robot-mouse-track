@@ -18,5 +18,5 @@
 https://robot-mouse-track.readthedocs.io
 
 ## 讨论交流
-![](imgs/img.png)
-![](imgs/img2.png)
+![img.png](imgs/img.png)
+![img.png](imgs/img2.png)
