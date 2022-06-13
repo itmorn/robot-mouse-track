@@ -1,6 +1,6 @@
 # robot-mouse-track
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/robot-mouse-track)
-![PyPI](https://img.shields.io/pypi/v/robot-mouse-track)
+[![PyPI Version](https://img.shields.io/pypi/v/robot-mouse-track)](https://pypi.org/project/robot-mouse-track)
 [![Downloads](https://pepy.tech/badge/robot-mouse-track)](https://pepy.tech/project/robot-mouse-track)
 [![Disscussion](https://img.shields.io/badge/chat-wechat-brightgreen?style=flat)](./README.md#讨论交流)
 
