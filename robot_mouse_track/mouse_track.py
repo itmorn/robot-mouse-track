@@ -31,8 +31,8 @@ class MouseTrack:
 
         self.feature_dev_combine = []
         self.feature_dev_decomposition = []
-        self.feature_doa = []
-        self.feature_diff_time = None
+        self.feature_doa = np.array([])
+        self.feature_diff_time = np.array([])
 
         self._arr_diff_dis = None
         self._arr_diff_time = None
@@ -44,7 +44,7 @@ class MouseTrack:
         :return: 时间差的一维数组
         :rtype: ndarray
         """
-        if self.feature_diff_time:
+        if len(self.feature_diff_time) > 0:
             return self.feature_diff_time
 
         self.feature_diff_time = self.arr_trace[1:, -1] - self.arr_trace[:-1, -1]
@@ -106,7 +106,7 @@ class MouseTrack:
         axis.set_xlim((x_min, x_max))
         axis.set_ylim((y_max, y_min))
         plt.title("trace xy")
-        plt.show()
+        # plt.show()
 
     def get_feature_doa(self):
         """
@@ -115,7 +115,7 @@ class MouseTrack:
         :return: 返回方向角的变化特征
         :rtype: ndarray
         """
-        if self.feature_doa:
+        if len(self.feature_doa) > 0:
             return self.feature_doa
 
         arr_diff_dis = self.arr_trace[self.max_doa_point:, :-1] - self.arr_trace[:-self.max_doa_point, :-1]
@@ -128,11 +128,11 @@ class MouseTrack:
         return self.feature_doa
 
 
-if __name__ == '__main__':
-    from examples import trace_examples
-
-    mt = MouseTrack(trace_examples.trace1)
-    x = mt.get_feature_dev(order=1, mode=contants.COMBINE)
-    y = mt.get_feature_dev(order=2, mode=contants.COMBINE)
-    print(x)
-    print(y)
+# if __name__ == '__main__':
+#     from examples import trace_examples
+#
+#     mt = MouseTrack(trace_examples.trace1)
+#     x = mt.get_feature_dev(order=1, mode=contants.COMBINE)
+#     y = mt.get_feature_dev(order=2, mode=contants.COMBINE)
+#     print(x)
+#     print(y)

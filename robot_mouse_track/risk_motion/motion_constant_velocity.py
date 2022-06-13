@@ -21,7 +21,7 @@ class ConstantVelocityMotion:
     """
 
     def __init__(self):
-        self.direction = contants.COMBINE
+        self.direction = contants.X
         self.n_order_dev = 2
         self.least_point = 5
         self.least_length = 100
@@ -35,17 +35,20 @@ class ConstantVelocityMotion:
         :return: (have_risk, risk_level)
         :rtype: (bool, float)
         """
-        feature_dev = mouse_track.get_feature_dev(order=self.n_order_dev, mode=self.direction)
-        if self.direction == contants.COMBINE:
+        arr_dev = ""
+        if self.direction in [contants.X, contants.Y]:
+            feature_dev = mouse_track.get_feature_dev(order=self.n_order_dev, mode=contants.DECOMPOSITION)
+            if self.direction == contants.X:
+                arr_dev = feature_dev[self.n_order_dev - 1][:, 0]
+            elif self.direction == contants.Y:
+                arr_dev = feature_dev[self.n_order_dev - 1][:, 1]
+        elif self.direction == contants.COMBINE:
+            feature_dev = mouse_track.get_feature_dev(order=self.n_order_dev, mode=contants.COMBINE)
             arr_dev = feature_dev[self.n_order_dev - 1]
-        elif self.direction == contants.X:
-            arr_dev = feature_dev[self.n_order_dev - 1][:, 0]
-        elif self.direction == contants.Y:
-            arr_dev = feature_dev[self.n_order_dev - 1][:, 1]
         else:
-            raise Exception("类型错误")
+            raise Exception("请输入正确的类型")
 
-        lst_small = small_runs(arr_dev[:, 0], span=self.th_span)
+        lst_small = small_runs(arr_dev.reshape(-1), span=self.th_span)
 
         min_span = 1000000
         for left, right in lst_small:
@@ -71,7 +74,7 @@ class ConstantVelocityMotion:
             span = arr_part.max() - arr_part.min()
             if span < min_span:
                 min_span = span
-
+        if min_span == 0: min_span = 0.0000001
         exceed_times = self.th_span / min_span
         if exceed_times > 1.0:
             return True, exceed_times
