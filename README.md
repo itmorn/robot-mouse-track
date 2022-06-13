@@ -19,4 +19,3 @@ https://robot-mouse-track.readthedocs.io
 
 ## 讨论交流
 ![img.png](imgs/img.png)
-![img.png](imgs/img2.png)
