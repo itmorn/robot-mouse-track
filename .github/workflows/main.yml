@@ -29,7 +29,9 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Run tests and collect coverage
-        run: pytest --cov=tests --cov-report=html
+        run: |
+          rootdir='/home/runner/work/robot-mouse-track'
+          pytest --cov=tests --cov-report=html
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
