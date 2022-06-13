@@ -5,7 +5,7 @@ import pyautogui
 import time
 
 
-def 模拟作答1():
+def simulate_answer():
     time.sleep(5)
     driver.find_element(By.XPATH, "/html/body/input[1]").click()
     time.sleep(1)
@@ -30,6 +30,6 @@ if __name__ == '__main__':
     driver = webdriver.Chrome()
     driver.get("file:///D:\\work_github\\robot-mouse-track-recognition\\examples\\collect_data.html")
 
-    模拟作答1()
+    simulate_answer()
     time.sleep(10)
     driver.close()
