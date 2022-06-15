@@ -131,3 +131,5 @@ dmypy.json
 /tst.py
 /history/
 /bash.txt
+/examples/collect_data_ap.html
+/examples/server_ap.py

@@ -90,11 +90,6 @@
 <script>
     function submit() {
         console.log(points);
-        var sendData = {
-            purId: '123456',
-            replyContent: 'xxx',
-            commentId: 'xxxx'
-        };
         $.ajax({
             url: 'http://127.0.0.1:5000/predict',
             data: JSON.stringify(points),

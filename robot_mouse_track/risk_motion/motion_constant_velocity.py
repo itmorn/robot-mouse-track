@@ -21,7 +21,7 @@ class ConstantVelocityMotion:
     """
 
     def __init__(self):
-        self.direction = contants.X
+        self.direction = contants.COMBINE
         self.n_order_dev = 2
         self.least_point = 5
         self.least_length = 100

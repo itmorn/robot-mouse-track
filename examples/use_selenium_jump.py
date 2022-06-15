@@ -28,6 +28,7 @@ def simulate_answer():
 if __name__ == '__main__':
     driver = webdriver.Chrome()
     driver.get("file:///D:\\work_github\\robot-mouse-track-recognition\\examples\\collect_data.html")
+    driver.get("file:///D:\\work_github\\robot-mouse-track-recognition\\examples\\collect_data_ap.html")
 
     simulate_answer()
     time.sleep(10)
